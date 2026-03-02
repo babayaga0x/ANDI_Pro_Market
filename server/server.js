@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const db = require("./db"); // mysql2/promise
+const db = require("./db");
 
 const app = express();
 app.use(cors());
@@ -14,7 +14,7 @@ const JWT_SECRET = "secret_for_demo";
 app.post("/api/register", async (req, res) => {
   const { name, email, password } = req.body;
   if (!name || !email || !password) {
-    return res.status(400).json({ error: "Заполните все поля" });
+    return res.status(400).json({ error: "Fill in all fields" });
   }
 
   try {
@@ -22,20 +22,20 @@ app.post("/api/register", async (req, res) => {
 
     const [result] = await db.query(
       "INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)",
-      [name, email, password_hash]
+      [name, email, password_hash],
     );
 
     res.json({ id: result.insertId, name, email });
   } catch (err) {
-    res.status(400).json({ error: "Email уже используется" });
+    res.status(400).json({ error: "Email is already in use" });
   }
 });
 
-// Логин
+// endpoint login
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    return res.status(400).json({ error: "Заполните все поля" });
+    return res.status(400).json({ error: "Fill in all fields" });
   }
 
   try {
@@ -44,19 +44,19 @@ app.post("/api/login", async (req, res) => {
     ]);
 
     if (results.length === 0) {
-      return res.status(400).json({ error: "Пользователь не найден" });
+      return res.status(400).json({ error: "User not found" });
     }
 
     const user = results[0];
     const valid = await bcrypt.compare(password, user.password_hash);
     if (!valid) {
-      return res.status(400).json({ error: "Неверный пароль" });
+      return res.status(400).json({ error: "Invalid password" });
     }
 
     const token = jwt.sign(
       { id: user.id, name: user.name, role: user.role },
       JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "1h" },
     );
 
     res.json({
@@ -69,7 +69,7 @@ app.post("/api/login", async (req, res) => {
       },
     });
   } catch (err) {
-    res.status(500).json({ error: "Ошибка входа" });
+    res.status(500).json({ error: "Login error" });
   }
 });
 
@@ -77,7 +77,7 @@ app.post("/api/login", async (req, res) => {
 function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    return res.status(401).json({ error: "Нет токена" });
+    return res.status(401).json({ error: "No token" });
   }
 
   const token = authHeader.split(" ")[1];
@@ -87,15 +87,13 @@ function authMiddleware(req, res, next) {
     req.user = payload;
     next();
   } catch {
-    res.status(401).json({ error: "Неверный токен" });
+    res.status(401).json({ error: "Invalid token" });
   }
 }
 
-//Admin
-// Пользователи
 app.get("/api/admin/users", authMiddleware, async (req, res) => {
   if (req.user.role !== "admin") {
-    return res.status(403).json({ error: "Доступ запрещен" });
+    return res.status(403).json({ error: "Access denied" });
   }
 
   try {
@@ -106,10 +104,9 @@ app.get("/api/admin/users", authMiddleware, async (req, res) => {
   }
 });
 
-// Продукты (админка)
 app.get("/api/admin/products", authMiddleware, async (req, res) => {
   if (req.user.role !== "admin") {
-    return res.status(403).json({ error: "Доступ запрещен" });
+    return res.status(403).json({ error: "Access denied" });
   }
 
   try {
@@ -120,10 +117,9 @@ app.get("/api/admin/products", authMiddleware, async (req, res) => {
   }
 });
 
-// Редактирование продукта
 app.put("/api/admin/products/:id", authMiddleware, async (req, res) => {
   if (req.user.role !== "admin") {
-    return res.status(403).json({ error: "Доступ запрещен" });
+    return res.status(403).json({ error: "Access denied" });
   }
 
   const { name, description, price } = req.body;
@@ -131,28 +127,26 @@ app.put("/api/admin/products/:id", authMiddleware, async (req, res) => {
   try {
     await db.query(
       "UPDATE products SET name = ?, description = ?, price = ? WHERE id = ?",
-      [name, description, price, req.params.id]
+      [name, description, price, req.params.id],
     );
 
     res.json({ success: true });
   } catch (err) {
-    console.error("Ошибка обновления продукта:", err);
-    res.status(500).json({ error: "Ошибка обновления продукта" });
+    console.error("Product update error:", err);
+    res.status(500).json({ error: "Product update error" });
   }
 });
 
-// Каталог
 app.get("/api/products", async (req, res) => {
   try {
     const [rows] = await db.query("SELECT * FROM products");
     res.json(rows);
   } catch (err) {
-    console.error("Ошибка /api/products:", err);
-    res.status(500).json({ error: "Ошибка загрузки товаров" });
+    console.error("Error /api/products:", err);
+    res.status(500).json({ error: "Product update error" });
   }
 });
 
-// Отзывы
 app.get("/api/reviews", async (req, res) => {
   try {
     const [rev] = await db.query("SELECT * FROM reviews");
@@ -160,21 +154,21 @@ app.get("/api/reviews", async (req, res) => {
     res.status(200).json(rev);
   } catch (err) {
     console.error("Ошибка /api/reviews:", err);
-    res.sendStatus(500).json({ error: "Ошибка загрузки отзывов " });
+    res.sendStatus(500).json({ error: "Error loading reviews" });
   }
 });
-// эндпоинт пост
+
 app.post("/api/reviews", async (req, res) => {
   try {
     const { name, text } = req.body;
 
     if (!name || !text) {
-      return res.status(400).json({ error: "Заполните все поля" });
+      return res.status(400).json({ error: "Fill in all fields" });
     }
 
     const [result] = await db.query(
       "INSERT INTO reviews (name, text) VALUES (?, ?)",
-      [name, text]
+      [name, text],
     );
 
     res.status(201).json({
@@ -185,31 +179,29 @@ app.post("/api/reviews", async (req, res) => {
     });
   } catch (err) {
     console.error("Ошибка POST /api/reviews:", err);
-    res.status(500).json({ error: "Ошибка добавления отзыва" });
+    res.status(500).json({ error: "Error adding review" });
   }
 });
 
-// Админ отзывы
 app.get("/api/admin/reviews", authMiddleware, async (req, res) => {
   if (req.user.role !== "admin") {
-    return res.status(403).json({ error: "Доступ запрещен" });
+    return res.status(403).json({ error: "Access denied" });
   }
 
   try {
     const [rows] = await db.query(
-      "SELECT * FROM reviews ORDER BY created_at DESC"
+      "SELECT * FROM reviews ORDER BY created_at DESC",
     );
     res.json(rows);
   } catch (err) {
     console.error("Ошибка /api/admin/reviews:", err);
-    res.status(500).json({ error: "Ошибка загрузки отзывов" });
+    res.status(500).json({ error: "Error loading reviews" });
   }
 });
 
-// Удаление отзыва (админ)
 app.delete("/api/admin/reviews/:id", authMiddleware, async (req, res) => {
   if (req.user.role !== "admin") {
-    return res.status(403).json({ error: "Доступ запрещен" });
+    return res.status(403).json({ error: "Access denied" });
   }
 
   try {
@@ -217,7 +209,7 @@ app.delete("/api/admin/reviews/:id", authMiddleware, async (req, res) => {
     res.json({ success: true });
   } catch (err) {
     console.error("Ошибка DELETE /api/admin/reviews/:id:", err);
-    res.status(500).json({ error: "Ошибка удаления отзыва" });
+    res.status(500).json({ error: "Error loading reviews" });
   }
 });
 

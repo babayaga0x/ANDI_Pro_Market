@@ -71,7 +71,7 @@ function Admin() {
       await axios.put(
         `http://localhost:5000/api/admin/products/${editProductId}`,
         editProductData,
-        { headers: { Authorization: `Bearer ${token}` } }
+        { headers: { Authorization: `Bearer ${token}` } },
       );
       setEditProductId(null);
       fetchProducts();
@@ -81,7 +81,7 @@ function Admin() {
   };
 
   const handleDeleteProduct = async (id) => {
-    if (!window.confirm("Удалить продукт?")) return;
+    if (!window.confirm("Delete product?")) return;
     try {
       await axios.delete(`http://localhost:5000/api/admin/products/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -91,9 +91,9 @@ function Admin() {
       console.error(err);
     }
   };
-  // Удаление комментария
+
   const handleDeleteComment = async (id) => {
-    if (!window.confirm("Удалить комментарий?")) return;
+    if (!window.confirm("Delete comment?")) return;
     try {
       await axios.delete(`http://localhost:5000/api/admin/reviews/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
@@ -106,7 +106,7 @@ function Admin() {
 
   return (
     <div>
-      <h2>Пользователи</h2>
+      <h2>Users</h2>
       <ul>
         {users.map((u) => (
           <li key={u.id}>
@@ -115,7 +115,7 @@ function Admin() {
         ))}
       </ul>
 
-      <h2>Отзывы</h2>
+      <h2>Reviews</h2>
       <ul>
         {reviews.map((r) => (
           <li key={r.id} style={{ marginBottom: "12px", listStyle: "none" }}>
@@ -143,14 +143,14 @@ function Admin() {
                 }}
                 onClick={() => handleDeleteComment(r.id)}
               >
-                Удалить
+                Delete
               </button>
             </div>
           </li>
         ))}
       </ul>
 
-      <h2>Продукты</h2>
+      <h2>Product</h2>
       <ul>
         {products.map((p) => (
           <li key={p.id}>
@@ -171,7 +171,7 @@ function Admin() {
                   value={editProductData.price}
                   onChange={handleEditChange}
                 />
-                <button onClick={handleEditSave}>Сохранить</button>
+                <button onClick={handleEditSave}>Save</button>
                 <button onClick={() => setEditProductId(null)}>Отмена</button>
               </div>
             ) : (
@@ -185,12 +185,10 @@ function Admin() {
                   alt={p.name}
                   width={80}
                 />
-                {p.name} - {p.description} - Руб. {p.price}{" "}
-                <button onClick={() => handleEditClick(p)}>
-                  Редактировать
-                </button>
+                {p.name} - {p.description} - $. {p.price}{" "}
+                <button onClick={() => handleEditClick(p)}>Edit</button>
                 <button onClick={() => handleDeleteProduct(p.id)}>
-                  Удалить
+                  Delete
                 </button>
               </div>
             )}

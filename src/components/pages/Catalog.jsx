@@ -14,8 +14,8 @@ function Catalog() {
 
   return (
     <main>
-      <h2>Каталог товаров</h2>
-      <p>Просмотр ассортимента продукции.</p>
+      <h2>Product Catalog</h2>
+      <p>View our product range.</p>
 
       <div className="gallery">
         {products.map((p) => (

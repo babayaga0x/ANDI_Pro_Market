@@ -10,7 +10,7 @@ async function createAdmin() {
   db.query("SELECT * FROM users WHERE email = ?", [email], (err, results) => {
     if (err) throw err;
     if (results.length > 0) {
-      console.log("Админ уже существует");
+      console.log("Admin already exists");
       return;
     }
 
@@ -20,7 +20,7 @@ async function createAdmin() {
       (err, result) => {
         if (err) throw err;
         console.log("Админ создан, ID:", result.insertId);
-      }
+      },
     );
   });
 }

@@ -4,27 +4,27 @@ import "./Portfolio.css";
 const works = [
   {
     id: 1,
-    title: "Вешалка",
+    title: "Hanger",
     image: "/images/veshalka.jpg",
   },
   {
     id: 2,
-    title: "Обувница",
+    title: "Shoe Rack",
     image: "/images/obuvnica.jpg",
   },
   {
     id: 3,
-    title: "Металлоконструкция 1",
+    title: "Metal Structure 1",
     image: "/images/work1.jpg",
   },
   {
     id: 4,
-    title: "Металлоконструкция 2",
+    title: "Metal Structure 2",
     image: "/images/work2.jpg",
   },
   {
     id: 5,
-    title: "Металлоконструкция 3",
+    title: "Metal Structure 3",
     image: "/images/work3.jpg",
   },
 ];
@@ -32,8 +32,8 @@ const works = [
 function Portfolio() {
   return (
     <main>
-      <h2>Портфолио</h2>
-      <p>Примеры выполненных работ.</p>
+      <h2>Portfolio</h2>
+      <p>Examples of completed work.</p>
 
       <div className="portfolio-gallery">
         {works.map((work) => (

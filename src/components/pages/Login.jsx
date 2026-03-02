@@ -18,16 +18,16 @@ function Login() {
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      alert("Вход выполнен");
+      alert("Logged in");
       window.location.href = "/admin";
     } catch (err) {
-      setError(err.response?.data?.error || "Ошибка входа");
+      setError(err.response?.data?.error || "Login error");
     }
   };
 
   return (
     <div className="auth-container">
-      <h2>Вход</h2>
+      <h2>Login</h2>
 
       {error && <div className="auth-error">{error}</div>}
 
@@ -44,13 +44,13 @@ function Login() {
         <input
           type="password"
           name="password"
-          placeholder="Пароль"
+          placeholder="Password"
           value={form.password}
           onChange={handleChange}
           required
         />
 
-        <button type="submit">Войти</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   );

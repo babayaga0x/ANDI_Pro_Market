@@ -18,21 +18,21 @@ function Header() {
         </div>
 
         <nav className="nav">
-          <Link to="/">Главная</Link>
-          <Link to="/about">О нас</Link>
-          <Link to="/catalog">Каталог</Link>
-          <Link to="/order">Заказ</Link>
-          <Link to="/portfolio">Портфолио</Link>
-          <Link to="/reviews">Отзывы</Link>
-          <Link to="/contacts">Контакты</Link>
+          <Link to="/">Main</Link>
+          <Link to="/about">About us</Link>
+          <Link to="/catalog">Catalog</Link>
+          <Link to="/order">Order</Link>
+          <Link to="/portfolio">Portfolio</Link>
+          <Link to="/reviews">Reviews</Link>
+          <Link to="/contacts">Contacts</Link>
         </nav>
         <nav className="nav">
-          <a href="/">Главная</a>
-          <a href="/login">Войти</a>
-          <a href="/register">Регистрация</a>
+          <a href="/">Main</a>
+          <a href="/login">Enter</a>
+          <a href="/register">Registration</a>
         </nav>
 
-        <p className="call-btn">+7 (933) 022-16-32</p>
+        <p className="call-btn">+1 (929) 555-1234</p>
       </div>
     </header>
   );

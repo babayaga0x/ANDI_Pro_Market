@@ -4,7 +4,7 @@ import "./Footer.css";
 function Footer() {
   return (
     <footer className="footer">
-      <p>© 2025 Металлоконструкции и металлоизделия под заказ</p>
+      <p>© 2025 Custom metal structures and metal products</p>
     </footer>
   );
 }

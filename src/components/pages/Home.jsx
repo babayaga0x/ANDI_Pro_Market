@@ -7,32 +7,32 @@ function Home() {
       <section className="hero">
         <h1>ANDI Pro Market</h1>
         <p className="subtitle">
-          Изготовление металлоконструкций и металлоизделий
+          Manufacturing of metal structures and metal products
         </p>
 
         <div className="rating">
-          <strong>5,0</strong>
-          <span>27 отзывов</span>
+          <strong>5.0</strong>
+          <span>27 reviews</span>
         </div>
 
         <div className="meta">
-          <span>15 подписчиков</span>
-          <span>3 подписки</span>
+          <span>15 subscribers</span>
+          <span>3 subscriptions</span>
         </div>
 
         <div className="checks">
-          <span>Компания проверена</span>
-          <span>Реквизиты проверены</span>
-          <span>Телефон подтверждён</span>
+          <span>Company verified</span>
+          <span>Details verified</span>
+          <span>Phone number verified</span>
         </div>
       </section>
 
       <section className="schedule">
-        <h3>Режим работы</h3>
+        <h3>Hours</h3>
         <ul>
-          <li>Понедельник – Пятница: 09:30–17:30</li>
-          <li>Суббота: Закрыто</li>
-          <li>Воскресенье: Закрыто</li>
+          <li>Monday – Friday: 9:30 AM - 5:30 PM</li>
+          <li>Saturday: Closed</li>
+          <li>Sunday: Closed</li>
         </ul>
       </section>
 
@@ -40,9 +40,9 @@ function Home() {
         <div className="gallery">
           <img src="/images/obuvnica.jpg" alt="Obuvnica" />
           <img src="/images/veshalka.jpg" alt="Veshalka" />
-          <img src="/images/work1.jpg" alt="Работа 1" />
-          <img src="/images/work2.jpg" alt="Работа 2" />
-          <img src="/images/work3.jpg" alt="Работа 3" />
+          <img src="/images/work1.jpg" alt="Work 1" />
+          <img src="/images/work2.jpg" alt="Work 2" />
+          <img src="/images/work3.jpg" alt="Work 3" />
         </div>
       </section>
     </main>

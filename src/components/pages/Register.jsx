@@ -18,16 +18,16 @@ function Register() {
 
     try {
       await axios.post("http://localhost:5000/api/register", form);
-      alert("Регистрация успешна");
+      alert("Registration successful");
       window.location.href = "/login";
     } catch (err) {
-      setError(err.response?.data?.error || "Ошибка регистрации");
+      setError(err.response?.data?.error || "Registration error");
     }
   };
 
   return (
     <div className="auth-container">
-      <h2>Регистрация</h2>
+      <h2>Registration</h2>
 
       {error && <div className="auth-error">{error}</div>}
 
@@ -35,7 +35,7 @@ function Register() {
         <input
           type="text"
           name="name"
-          placeholder="Имя"
+          placeholder="Name"
           value={form.name}
           onChange={handleChange}
           required
@@ -53,13 +53,13 @@ function Register() {
         <input
           type="password"
           name="password"
-          placeholder="Пароль"
+          placeholder="Password"
           value={form.password}
           onChange={handleChange}
           required
         />
 
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   );

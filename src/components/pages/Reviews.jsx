@@ -11,7 +11,7 @@ export default function Reviews() {
     fetch("http://localhost:5000/api/reviews")
       .then((res) => res.json())
       .then((data) => setReviews(data))
-      .catch(() => setError("Ошибка загрузки отзывов"))
+      .catch(() => setError("Error loading reviews"))
       .finally(() => setLoading(false));
   }, []);
 
@@ -36,7 +36,7 @@ export default function Reviews() {
       setName("");
       setText("");
     } catch {
-      setError("Не удалось добавить отзыв");
+      setError("Failed to add review");
     }
   };
 
@@ -45,19 +45,19 @@ export default function Reviews() {
       <form onSubmit={submitReview}>
         <input
           type="text"
-          placeholder="Ваше имя"
+          placeholder="Your name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <textarea
-          placeholder="Ваш отзыв"
+          placeholder="Your review"
           value={text}
           onChange={(e) => setText(e.target.value)}
         />
-        <button type="submit">Отправить</button>
+        <button type="submit">Submit</button>
       </form>
 
-      {loading && <p>Загрузка отзывов…</p>}
+      {loading && <p>Loading reviews…</p>}
       {error && <p>{error}</p>}
 
       {reviews.map((rev) => (
