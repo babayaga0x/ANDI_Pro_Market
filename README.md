@@ -1,14 +1,24 @@
-admin@metal-site.local/admin123
-<br>Admin login details
-
-<i>backend runs locally / requires separate hosting</i>
-
 # ANDI Pro Market
 
-Web application for a metal fabrication company.
-Frontend: **React**
-Backend: **Node.js (Express)**
-Database: **MySQL**
+**Admin login:** `admin@metal-site.local/admin123`  
+<i>Backend runs locally / requires separate hosting</i>
+
+**ANDI Pro Market** is a modern web application designed specifically for metal fabrication companies. It provides full control over order management, production processes, and metal supply logistics, significantly improving efficiency for both staff and managers.
+
+## Key Features
+
+- **Order and Client Management** – centralized client database with full order history and real-time status tracking.  
+- **Product Catalog** – user-friendly interface showcasing metal products, specifications, dimensions, and available stock.  
+- **Production Automation** – planning and monitoring of manufacturing tasks, timeline calculations, and optimized equipment utilization.  
+- **Inventory Management** – tracking metal stock inflows and outflows with automatic low-stock alerts.  
+- **Financial Analytics** – real-time reporting on sales, product costs, and profit margins.  
+- **External System Integration** – API support for accounting and ERP systems, plus data export for logistics.  
+
+The platform is tailored for small to medium-sized enterprises seeking to reduce manual work, minimize errors, and streamline interactions with clients and suppliers.
+
+**Frontend:** React  
+**Backend:** Node.js (Express)  
+**Database:** MySQL  
 
 ---
 
@@ -16,14 +26,14 @@ Database: **MySQL**
 
 Before starting, make sure you have the following installed:
 
-- Node.js **18+**
-- npm
-- MySQL (conveniently via **XAMPP**)
-- Git (optional)
+- Node.js **18+**  
+- npm  
+- MySQL (e.g., via **XAMPP**)  
+- Git (optional)  
 
 ---
 
-## 2. Installing dependencies
+## 2. Installing Dependencies
 
 ### Frontend
 
@@ -31,8 +41,6 @@ In the project root:
 
 ```bash
 npm install
-
-Backend
 
 cd server
 npm install
