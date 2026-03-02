@@ -1,32 +1,33 @@
-admin@metal-site.local / admin123
-<br>Данные для логина админки
+admin@metal-site.local/admin123
+<br>Admin login details
 
 <i>backend runs locally / requires separate hosting</i>
+
 # ANDI Pro Market
 
-Веб-приложение для компании по изготовлению металлоконструкций.  
-Frontend: **React**  
-Backend: **Node.js (Express)**  
-База данных: **MySQL**
+Web application for a metal fabrication company.
+Frontend: **React**
+Backend: **Node.js (Express)**
+Database: **MySQL**
 
 ---
 
-## 1. Требования
+## 1. Requirements
 
-Перед запуском убедитесь, что установлено:
+Before starting, make sure you have the following installed:
 
 - Node.js **18+**
 - npm
-- MySQL (удобно через **XAMPP**)
-- Git (по желанию)
+- MySQL (conveniently via **XAMPP**)
+- Git (optional)
 
 ---
 
-## 2. Установка зависимостей
+## 2. Installing dependencies
 
 ### Frontend
 
-В корне проекта:
+In the project root:
 
 ```bash
 npm install
@@ -36,37 +37,27 @@ Backend
 cd server
 npm install
 ```
-## После
+
+## After
+
 ```bash
 cd ./metal-site
 npm start
 ```
+
 ```bash
 cd ./metal-site
 cd ./server
 node server.js
 ```
-## Как это выглядит
-
-<img width="1920" height="1036" alt="Снимок экрана (698)" src="https://github.com/user-attachments/assets/0443cfd4-f3da-4f33-9e94-06cbdf0b1e3e" />
-
-<img width="1920" height="1038" alt="Снимок экрана (699)" src="https://github.com/user-attachments/assets/50b94ac7-1bfe-47b2-980f-08afb49671b5" />
-
-<img width="1920" height="1036" alt="Снимок экрана (700)" src="https://github.com/user-attachments/assets/8c15a415-2db5-4ed4-b650-3d20fce06b23" />
-
-<img width="1920" height="1033" alt="Снимок экрана (701)" src="https://github.com/user-attachments/assets/899a0ddb-dd84-4bbc-b309-b05711d5eece" />
-
-<img width="1920" height="1038" alt="Снимок экрана (706)" src="https://github.com/user-attachments/assets/fe6b4669-f2e9-4d1e-81f4-5190e8a5d98f" />
-
-<img width="1920" height="1036" alt="Снимок экрана (707)" src="https://github.com/user-attachments/assets/c942339f-ca83-4ea6-a5ed-3acd43dd2751" />
-
-<img width="1920" height="921" alt="Снимок экрана (718)" src="https://github.com/user-attachments/assets/656475d7-5d3a-4dfa-b101-3036d4f269c3" />
 
 
+What does it look like:
 
-
-
-
-
-
-
+<img width="1920" height="906" alt="1" src="https://github.com/user-attachments/assets/c5808f4d-6053-4c0f-8f45-abe904cecf24" />
+<img width="1902" height="911" alt="2" src="https://github.com/user-attachments/assets/44c9df6b-0b61-4226-bb91-03841ace4765" />
+<img width="1920" height="913" alt="3" src="https://github.com/user-attachments/assets/cea2ddfd-59ff-401e-b6fb-99d83edcf63b" />
+<img width="1920" height="909" alt="4" src="https://github.com/user-attachments/assets/2216d9ec-aa5b-45e7-ad8f-ba66039879a0" />
+<img width="1897" height="909" alt="5" src="https://github.com/user-attachments/assets/4d25f5de-93f8-48b9-95a9-742589891f49" />
+<img width="1920" height="486" alt="6" src="https://github.com/user-attachments/assets/140c7ea6-10cb-4e3e-9b2c-0406854dd663" />
+<img width="1920" height="903" alt="7" src="https://github.com/user-attachments/assets/0d5dba31-01b6-4582-abe3-8597d7edaf66" />
